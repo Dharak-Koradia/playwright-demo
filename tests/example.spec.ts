@@ -1,3 +1,5 @@
+// temporary test comment
+
 import { test, expect } from '@playwright/test';
 
 test('homepage has title', async ({ page }) => {
