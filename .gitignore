@@ -12,3 +12,6 @@ blob-report/
 
 # OS-specific files
 .DS_Store
+
+# env variables
+.env.*
