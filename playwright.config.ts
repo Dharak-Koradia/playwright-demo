@@ -20,9 +20,16 @@ export default defineConfig({
     ['html', { open: 'on-failure' }] // Auto-open report if something fails
   ],
 
+  // Define projects for cross-browser testing
+  projects: [
+    { name: 'Chromium', use: { browserName: 'chromium' } },
+    { name: 'Firefox', use: { browserName: 'firefox' } },
+    { name: 'WebKit', use: { browserName: 'webkit' } },
+  ],
+
   use: {
     baseURL: process.env.BASE_URL,
-    headless: true,
+    headless: true,                // Default headless mode (use --headed to override)
     screenshot: 'only-on-failure', // Capture screenshots only when tests fail
     video: 'retain-on-failure',    // Record videos only for failed tests
     trace: 'retain-on-failure',    // Retain trace only when failure happens
