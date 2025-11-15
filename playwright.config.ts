@@ -3,14 +3,18 @@ import dotenv from 'dotenv';
 import path from 'path';
 
 
-// Decide which .env file to load based on the ENV variable
-const envFile = process.env.ENV === 'prod' ? '.env.prod' : '.env.staging';
-
-// Load the variables
-dotenv.config({ path: path.resolve(__dirname, envFile) });
+// Load .env file only if running locally (not in CI)
+if (!process.env.CI) {
+  const envFile = process.env.ENV === 'prod' ? '.env.prod' : '.env.staging';
+  dotenv.config({ path: path.resolve(__dirname, envFile) });
+  console.log(`I am from Playwright config file -- loaded environment file: ${envFile}`);
+} 
+else {
+  console.log('I am from Playwright config file -- Running in CI — using GitHub Secrets for env variables...');
+}
 
 // Print which environment you’re using
-console.log(`From Playwright config file: Running tests on: ${process.env.BASE_URL}`);
+console.log(`I am from Playwright config file -- this is the process.env.BASE_URL: ${process.env.BASE_URL}`);
 
 export default defineConfig({
   retries: 2, // Retry failed tests up to 2 times

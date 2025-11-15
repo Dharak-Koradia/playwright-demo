@@ -2,40 +2,44 @@ name: Playwright Tests
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
 
 jobs:
   test:
     runs-on: ubuntu-latest
 
+    env:
+      ENV: staging
+      BASE_URL: ${{ secrets.STAGING_BASE_URL }}
+      USERNAME: ${{ secrets.STAGING_USERNAME }}
+      PASSWORD: ${{ secrets.STAGING_PASSWORD }}
+
     steps:
-      # Checkout the repository code
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Set up Node.js (Playwright needs Node)
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      # Install dependencies
       - name: Install dependencies
         run: npm ci
 
-      # Install Playwright browsers
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
-      # Run tests
-      - name: Run Playwright tests
-        run: npx playwright test --reporter=html
+      - name: Clean previous reports
+        run: rm -rf playwright-report test-results
 
-      # Upload HTML report as artifact (for download)
-      - name: Upload test report
-        if: always()
+      - name: Run Playwright tests
+        run: npx playwright test --reporter=list,html
+
+      - name: Upload Playwright report
+        # Only run in real GitHub Actions
+        if: ${{ github.run_id != '' }}  
         uses: actions/upload-artifact@v4
         with:
           name: playwright-report
           path: playwright-report/
-          retention-days: 7

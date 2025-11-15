@@ -21,7 +21,7 @@ export class LoginPage {
   }
 
   async goto() {
-    await this.page.goto(process.env.BASE_URL || 'https://www.saucedemo.com');
+    await this.page.goto(process.env.BASE_URL || 'https://envVariablesDidNotLoad.com');
   }
 
   async login() {

@@ -15,3 +15,4 @@ blob-report/
 
 # env variables
 .env.*
+.secrets
