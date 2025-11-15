@@ -38,7 +38,7 @@ jobs:
 
       - name: Upload Playwright report
         # Only run in real GitHub Actions
-        if: ${{ github.run_id != '' }}  
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: playwright-report
