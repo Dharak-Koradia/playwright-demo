@@ -9,6 +9,7 @@ export const testData = {
     password: 'wrong_pass'
   },
   messages: {
-    loginFailure: 'Epic sadface: Username and password do not match any user in this service'
+    loginFailure: 'Epic sadface: Username and password do not match any user in this service',
+    orderSuccessful: 'Thank you for your order!'
   }
 };
