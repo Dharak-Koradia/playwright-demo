@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
 
 test.describe('Login Tests using Env Variables', () => {
-  test('should login using environment variables', async ({ page }) => {
+  test('Should login using environment variables', async ({ page }) => {
     const loginPage = new LoginPage(page);
     await loginPage.goto();
 
