@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test('[Non-UI] Flaky test that might succeed on retry', async ({ page }) => {
+test('[Non-UI] Flaky test that might succeed on retry @negative', async ({ page }) => {
 
     const random = Math.random();
     console.log(`🌀 Random value: ${random}`);

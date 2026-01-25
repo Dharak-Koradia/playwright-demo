@@ -2,7 +2,7 @@
 import { test, expect } from '@playwright/test';
 import { HomePage } from '../pages/HomePage';
 
-test('Homepage has title and get started link works', async ({ page }) => {
+test('Homepage has title and get started link works @negative', async ({ page }) => {
   const homePage = new HomePage(page);
 
   await homePage.goto();

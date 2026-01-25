@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
 import { testData } from '../utils/testData';
 
-test.describe('Login Tests with Custom Credentials', () => {
+test.describe('Login Tests with Custom Credentials @smoke', () => {
 
   test('Should login successfully with valid credentials', async ({ page }) => {
     const loginPage = new LoginPage(page);

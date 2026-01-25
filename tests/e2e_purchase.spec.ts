@@ -3,7 +3,7 @@ import { LoginPage } from '../pages/LoginPage';
 import { InventoryPage } from '../pages/InventoryPage';
 import { CheckoutPage } from '../pages/CheckoutPage';
 
-test('End-to-end purchase flow', async ({ page }) => {
+test('End-to-end purchase flow @e2e', async ({ page }) => {
   const loginPage = new LoginPage(page);
   const inventoryPage = new InventoryPage(page);
   const checkoutPage = new CheckoutPage(page);

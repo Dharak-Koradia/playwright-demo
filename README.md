@@ -105,7 +105,7 @@ This project is integrated with **GitHub Actions**, enabling automated execution
 > - Failure diagnostics
 > - Trace and report generation in CI
 
-As a result, CI runs may appear as **failed**, which is expected and intentional for learning and demonstration purposes.
+As a result, CI runs _may_ appear as **failed**, which is expected and intentional for learning and demonstration purposes.
 
 Test artifacts and reports are published in CI to aid failure analysis.
 
@@ -116,7 +116,17 @@ Test artifacts and reports are published in CI to aid failure analysis.
 - then run the following command:
 
 ```bash
-npx playwright show-report <path_to_playwright-report_folder>
+npx playwright show-report <full_path_to_playwright-report_folder>
 ```
 
 - the report should be opened in browser
+
+### Test Selection Strategy
+
+Tests are tagged based on purpose:
+
+- `@smoke` – critical flows executed in CI for fast feedback
+- `@e2e` – full end-to-end user journeys
+- `@negative` – flaky or intentionally failing tests for learning and diagnostics
+
+In CI, only `@smoke` tests are executed to ensure stability and quick validation of core functionality.
